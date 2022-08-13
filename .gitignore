@@ -1,3 +1,9 @@
-# exclude all ISO files
-*.iso
-OS/
+# exclude all files
+*.*
+# except
+*.mod.c
+!.gitignore
+!*.c
+!*.md
+# exclude mod.c files too
+*.mod.c
