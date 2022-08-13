@@ -94,5 +94,28 @@ Find the IP of the _guest_ and use that to SSH into from the _host_
 hostname -I
 ```
 
+## 2. Setup Development environment
+
+### 2.1. Setup git
+Setting up git & SSH connection to my Github account. <br>
+1. [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) <br>
+2. [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+### 2.2. Stup VIM using my desktop configuration
+In my host machine I use Neovim, but here Vim will work. <br>
+Setting up Vim the same as my host machine.
+
+### 2.3. Install the development environment
+Install the essential development tools & kernel header necessary for this to work.
+
+```bash
+sudo apt install build-essential linux-headers-`uname -r`
+```
+
+## 3. Develop - What to do here?
+- [ ] Create a simple Linux Kernel Module
+- [ ] Enhance that Kernel Module
+- [ ] Think of some other idea to implement
+
 
 
