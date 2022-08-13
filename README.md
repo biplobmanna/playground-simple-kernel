@@ -1,9 +1,9 @@
 # Writing a simple Linux Kernel Module
 
-## 1. Installing a Virtualization Software
+## 1. Setup a virtualization software
 For this purpose, I will go with **QEMU** since this is something I have wished to try out for some time now.
 
-### 1.1. Installing QEMU on Kubuntu 22.04
+### 1.1. Installing QEMU/KVM on Kubuntu 22.04
 ```bash
 # install packages required for qemu & kvm
 sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon
@@ -51,5 +51,48 @@ sudo systemctl restart libvirtd
 # enable libvirtd to start on boot
 sudo systemctl enable libvirtd
 ```
+
+### 1.3. Create a VM for Lubuntu-20.04
+Since I'm going to be running the VM in my laptop, which runs Kubuntu-20.04, I require something lightweight. So, **_Lubuntu-20.04_** is chosen.
+
+#### 1.3.1. Create a OS pool
+The **_lubuntu-20.04_** ISO is inside `./OS/` folder in the project root. All contents have been excluded in `.gitignore`
+
+#### 1.3.2. Create a storage pool
+In the extra HD (1TB), the storage pool is created, which contains a virtual hard-drive of 20GiB.
+
+#### 1.3.3. Setting up Networking
+Since this is going to be a development environment, a `bridged` network is a must. <br>
+So, let's setup a _bridged_ network interface.
+
+Using the **_Kubuntu Network Manager_** which already had a default _bridged network_ created `virbr0`
+
+Using that in _virt-manager_ as the default network.
+
+#### 1.3.4. Installing Lubuntu-20.04
+Installing Lubuntu without any other hassle. <br>
+> System: <br>CPU: 2 cores <br>RAM: 3072 MB <br>HD: 20GB <br>Network: bridged (virbr0)
+
+#### 1.3.5. Setting up SSH (host -> guest)
+Upgrade the host system & install `openssh-server`
+
+```bash
+# update & upgrade
+sudo apt update && sudo apt upgrade -y
+# install openssh-server
+sudo apt install openssh-server -y
+# restart the firewall
+sudo systemctl restart ufw
+# check the status of ufw
+sudo systemctl status ufw
+```
+
+Find the IP of the _guest_ and use that to SSH into from the _host_
+
+```bash
+# find the IP of the host
+hostname -I
+```
+
 
 

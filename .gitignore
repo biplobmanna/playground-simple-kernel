@@ -1,0 +1,3 @@
+# exclude all ISO files
+*.iso
+OS/
