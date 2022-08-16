@@ -7,3 +7,4 @@
 !*.md
 # exclude mod.c files too
 *.mod.c
+!*.gif
